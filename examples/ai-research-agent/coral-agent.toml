@@ -1,0 +1,30 @@
+edition = 4
+
+[agent]
+name = "research-agent"
+version = "0.1.0"
+description = "AI Research Agent — sells concise research briefs on any topic, paid per-brief in SOL via devnet escrow."
+summary = "An LLM-powered research assistant that delivers sourced briefs. Buyer pays via Solana escrow; seller delivers on payment verification."
+readme = "Research loop: buyer sends a topic → WANT is broadcast → seller BIDs → buyer AWARDs best value → escrow DEPOSIT → seller DELIVERs brief → escrow RELEASEs payment."
+
+[agent.license]
+type = "spdx"
+expression = "MIT"
+
+[options]
+SELLER_WALLET = { type = "string", description = "Devnet wallet pubkey that receives payments" }
+AGENT_NAME = { type = "string", default = "research-agent" }
+SERVICE = { type = "string", default = "research" }
+FLOOR_SOL = { type = "f64", default = 0.0005 }
+PERSONA = { type = "string", default = "a research specialist who delivers concise, sourced briefs on any topic" }
+SOLANA_RPC_URL = { type = "string", default = "" }
+SETTLEMENT_MODE = { type = "string", default = "arbiter" }
+ESCROW_DEADLINE_SECS = { type = "f64", default = 600 }
+ANTHROPIC_API_KEY = { type = "string", default = "" }
+OPENAI_API_KEY = { type = "string", default = "" }
+VENICE_API_KEY = { type = "string", default = "" }
+LLM_PROVIDER = { type = "string", default = "" }
+LLM_MODEL = { type = "string", default = "" }
+
+[runtimes.docker]
+image = "research-agent:0.1.0"
